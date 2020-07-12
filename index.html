@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body>
+  <div class="root">
+    <header class="header root__section">
+      <img src="./images/logo.svg" alt="mesto logo" class="logo">
+    </header>
+    <div class="profile root__section">
+      <div class="user-info">
+        <div class="user-info__photo"></div>
+        <div class="user-info__data">
+          <h1 class="user-info__name"></h1>
+          <p class="user-info__job"></p>
+          <button class="button user-info__edit">Edit</button>
+        </div>
+        <button class="button user-info__button">+</button>
+      </div>
+    </div>
+
+    <div class="places-list root__section"></div>
+
+    <div id="popup-card" class="popup">
+      <div class="popup__content">
+        <img src="./images/close.svg" alt="" class="popup__close" id="popup-close-card">
+        <h3 class="popup__title">Новое место</h3>
+        <form id="user-card" class="popup__form" name="new" novalidate>
+          <input id="name-card" type="text" name="name" class="popup__input popup__input_type_name" minlength="2" maxlength="30" required placeholder="Название">
+          <span id="name-card-error" class="error"></span>
+          <input id="link" type="url" name="link" class="popup__input popup__input_type_link-url" required placeholder="Ссылка на картинку">
+          <span id="link-error" class="error"></span>
+          <button type="submit" class="button popup__button popup__button_add">+</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="popup-user" class="popup">
+      <div class="popup__content">
+        <img src="./images/close.svg" alt="" class="popup__close" id="popup-close-user">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form id="edit-info" class="popup__form" name="user" novalidate>
+          <input id="user-name" type="text" name="user-name" class="popup__input popup__input_type_user-name" minlength="2" required placeholder="Имя">
+          <span id="user-name-error" class="error"></span>
+          <input id="about" type="text" name="about" class="popup__input popup__input_type_user-info" minlength="2" required placeholder="О себе">
+          <span id="about-error" class="error"></span>
+          <button type="submit" class="button popup__button popup__button_save">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="popup-img" class="popup">
+      <div class="popup__container">
+        <img class="popup__image">
+        <img src="./images/close.svg" alt="" class="popup__close" id="popup-close-img">
+      </div>
+    </div>
+
+          <!-- Пример вёрстки карточки: -->
+      <!-- ++ Можно лучше: перенести template в конец body перед первым script -->
+      <!-- Можно лучше: template по умолчанию имеет display: none --> 
+      <!-- ОТ СТУДЕНТА: а Балабанович сказал, что некоторые устаревшие браузеры могут считывать template, и display: none для них на всякий случай-->
+      <!-- Не вспомнил о старых браузерах. В таком случае это только плюс -->
+      <template id="place-card-template" style="display: none">
+        <div class="place-card">
+          <!-- ++ Можно лучше: Убрать background-image т.к. он все равно будет перезаписан -->
+          <div class="place-card__image">
+            <button class="place-card__delete-icon"></button>
+          </div>
+          <div class="place-card__description">
+            <!-- ++ Можно лучше: Убрать название т.к. оно все равно будет перезаписано -->
+            <h3 class="place-card__name"></h3>
+            <button class="place-card__like-icon"></button>
+          </div>
+        </div>
+      </template>
+      <!-- конец примера. -->
+  </div>
+  <script src="./js/CardList.js"></script>
+  <script src="./js/Card.js"></script>
+  <script src="./js/Popup.js"></script>
+  <script src="./js/PopupImg.js"></script>
+  <script src="./js/UserInfo.js"></script>
+  <script src="./js/FormValidator.js"></script>
+  <script src="./js/Api.js"></script>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+.user-info__edit {
+  max-width: 38px;
+  max-height: 18px;
+  font-size: 12px;
+  margin-top: 24px;
+}
+
+.user-info__edit:hover {
+  background-color: #fff;
+  color: #111;
+}
+  
+  @media screen and (max-width: 980px) {
+    .user-info__edit {
+      margin: 24px auto 40px;
+    }
+  }

@@ -1,0 +1,13 @@
+@import url(../__button/_valid/_valid.css);
+@import url(../__button/_save/_save.css);
+@import url(../__button/_add/add.css);
+
+.popup__button {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  margin-top: 48px;
+  font-size: 36px;
+  font-size: 18px;
+  color: rgba(0, 0, 0, .5);
+}
