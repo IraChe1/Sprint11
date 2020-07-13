@@ -1,20 +1,9 @@
-class Api {
+export class Api {
     constructor(config) {
         this.url = config.url;
         this.headers = config.headers;
     }
 
-/*REVIEW. +++ Нужно исправить. В статический метод reject класса Promise нужно передать аргумент res.status, чтобы этот метод знал, какая именно ошибка (с каким
-       статусом) произошла и сформировал объект именно этой ошибки, которая затем будет обнаружена в методе catch, где Вы и сможете сообщить пользователю
-       какая именно ошибка произошла.  О Promis API можно кратко прочитать здесь
-       https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise.
-
-       То есть должна быть инструкция:
-       return Promise.reject(res.status);
-       О методе  fetch можно прочитать здесь https://learn.javascript.ru/fetch), об обнаружении ошибок в цепочке промисов здесь:
-        https://learn.javascript.ru/promise-error-handling.
-
-*/
     getCards() {
         return fetch(`${this.url}/cards`, {
             headers: this.headers

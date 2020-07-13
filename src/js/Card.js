@@ -1,4 +1,4 @@
-class Card {
+export class Card {
     constructor(name, link, cardTemplate, popupImg) {
         this.name = name;
         this.link = link;
@@ -12,11 +12,6 @@ class Card {
         const cardImg = newCard.querySelector('.place-card__image');
 
         newCard.querySelector('.place-card__name').textContent = this.name;
-        /**
-         * Можно лучше:
-         * cardImg.style.backgroundImage
-         * Таким образом не перезапишутся старые стили, если они имеются.
-         */
         cardImg.setAttribute('style', `background-image: url(${this.link})`);
         cardImg.setAttribute('src', this.link);
 
@@ -39,12 +34,6 @@ class Card {
     remove(evt) {
         evt.stopPropagation();
         this.card.remove();
-
-        /**
-         * Можно лучше:
-         * Снимать все обработчики и обнулять this.card
-         * Таким образом мы удалим все ссылки на данный элемент и сборщик мусора сможет удалить его из памяти.
-         */
     }
 
     showImg() {
