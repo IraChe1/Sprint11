@@ -1,3 +1,13 @@
+import { Api } from './Api';
+import { Card } from './Card';
+import { CardList } from './CardList';
+import { FormValidator } from './FormValidator';
+import { Popup } from './Popup';
+import { PopupImg } from './PopupImg';
+import { UserInfo } from './UserInfo';
+import "../pages/index.css";
+
+
 const placesList = document.querySelector('.places-list');
 const placeCardTemplate = document.querySelector('#place-card-template').content.querySelector('.place-card');
 const popupCard = document.querySelector('#popup-card');
@@ -28,8 +38,9 @@ const editBtn = document.querySelector('.popup__button_save');
 const userAvatar = document.querySelector('.user-info__photo');
 const userInfo = new UserInfo(userName, userJob, userAvatar, formUserInfo);
 const editFormValidator = new FormValidator(formUserInfo, editBtn, errorMessages);
+const API_URL = NODE_ENV === 'production' ? 'https://praktikum.tk' : 'http://praktikum.tk';
 const config = {
-    url: 'https://praktikum.tk/cohort11',
+    url: `${API_URL}/cohort11`,
     headers: {
         authorization: 'cdbaa228-e6e3-4f38-a060-e02c555da5f7',
         'Content-Type': 'application/json'
@@ -44,15 +55,9 @@ popupImg.setEventListeners();
 
 api.getCards().then(res => {
     const cards = res.map(item => {
-        /*REVIEW. Можно лучше. Можно две нижеследующие инструкции занести в функцию, и поместить в область видимости, где эта функция будет доступна
-        всем функциям и методам файла script.js. Эту функцию можно будет вызывать с нужными аргументами везде, где нужно. Таким образом Вы устраните
-        дублирование кода в этом методе и при добавлении новой карточки из формы карточки. */
         const card = new Card(item.name, item.link, placeCardTemplate, popupImg);
         return card.create();
     });
-    /*REVIEW. Можно лучше. Можно определение const cardList вынести в код вне всяких функций, в область видимости, где она будет доступна всем функциям и методам файла
-    script.js, и нигде не повторять её определение.
-    Таким образом Вы устраните дублирование кода в этом методе и при добавлении новой карточки из формы карточки  */
     const cardList = new CardList(placesList, cards);
     cardList.render();
 })
